@@ -64,7 +64,7 @@ function create() {
 	// Player:
 		player = game.add.sprite(32, game.world.height - 150, 'player');
 		// Physics
-		player.body.bounce.y = 0.1;
+		player.body.bounce.y = 0.0;
 		player.body.gravity.y = 10;
 		
 		player.anchor.setTo(0.5, 0.5);
@@ -82,7 +82,7 @@ function create() {
 		for (var i = 0; i < 15; i++){
 			var potato = potatoes.create(i * 70, 0, 'potato');
 			potato.body.gravity.y = 6;
-			potato.body.bounce.y = 0.7 + Math.random() * 0.2;
+			potato.body.bounce.y = 0.2 + Math.random() * 0.2;
 		}
 	
 	// Camera
