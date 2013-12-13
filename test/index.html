@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Map Loading</title>
+		<script type="text/javascript" src="phaser.min.js"></script>
+		<script type="text/javascript">
+			var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+			
+			function preload() {
+				game.load.tilemap('testMap', 'test.json', null, Phaser.Tilemap.TILED_JSON);
+				game.load.tileset('tiles', 'tiles.png', 32, 32);
+			}
+			
+			var map;
+			var tileset;
+			var layer;
+			var cursors;
+			var overlap;
+			
+			function create(){
+				game.stage.backgroundColor = '#000';
+				
+				map = game.add.tilemap('testMap');
+				
+				tileset = game.add.tileset('tiles');
+				
+				tileset.setCollisionRange(0, tileset.total - 1, true, true, true, true);
+				
+				layer = game.add.tilemapLayer(0, 0, 800, 600, tileset, map, 0);
+				layer.resizeWorld();
+			}
+			
+			function update(){
+			
+			}
+			
+			function render(){
+			
+			}
+		</script>
+	</head>
+	
+	<body>
+		
+	</body>
+</html>
