@@ -39,50 +39,37 @@ var jumping = false;
 var map;
 var tileset;
 var layer;
+var bg;
+
 
 function create() {
 	
-	// Keyboard input
-	cursors = game.input.keyboard.createCursorKeys();
-	
 	// Play Music
-	music = game.add.audio('overworldSong',1,true);
+	//music = game.add.audio('overworldSong',1,true);
 	//music.play('',0,1,true);
 	
-	// World Stuff
-	//game.world.setBounds(0, 0, 1400, 640);
-	
 	// Temporary Background
-		game.add.sprite(0, 0, 'background');
+		bg = game.add.sprite(0, 0, 'background');
+		bg.fixedToCamera = true;
 	
 	// Tile sheets
-		game.stage.backgroundColor = '#000';
+		//game.stage.backgroundColor = '#000';
 		map = game.add.tilemap('testMap');
 		tileset = game.add.tileset('tiles');
 		tileset.setCollisionRange(0, tileset.total - 1, true, true, true, true);
 		
-		layer = game.add.tilemapLayer(0,0,1440,640, tileset, map, 0);
+		layer = game.add.tilemapLayer(0,0,1024,640, tileset, map, 0);
 		layer.resizeWorld();
-		//layer.immovable = true;
-	
-	/* Platforms:
-		platforms = game.add.group();
-		var ground = platforms.create(0, game.world.height-64, 'ground');
-		ground.scale.setTo(2,2);a
-		ground.body.immovable = true;
-		
-		var ledge = platforms.create(600, 400, 'ground');
-		ledge.body.immovable = true;
-		ledge = platforms.create(-200, 250, 'ground');
-		ledge.body.immovable = true;
-	*/
 	
 	// Player:
 		player = game.add.sprite(32, game.world.height - 150, 'player');
 		// Physics
 		player.body.bounce.y = 0.1;
 		player.body.gravity.y = 10;
-		//player.body.collideWorldBounds = true;
+		
+		player.anchor.setTo(0.5, 0.5);
+		player.body.collideWorldBounds = true;
+		
 		// Animations
 		player.animations.add('right', [0,1,0,2], 7, true);
 		player.animations.add('left', [9,8,9,7],7,true);
@@ -105,7 +92,9 @@ function create() {
 		var textGroup = game.add.group(null);
 		scoreText = game.add.text(16,16,'Score: 0', { fontSize: '32px', fill: '#000'});
 		textGroup.add(scoreText);
-}
+		
+		cursors = game.input.keyboard.createCursorKeys();
+} 
 
 function update() {
 	
@@ -167,13 +156,11 @@ function update() {
 
 }
 
-
 function collectPotato(player, potato) {
 	potato.kill();
 	score += 1;
 	scoreText.content = 'Potatoes: ' + score;
 }
-
 
 
 
