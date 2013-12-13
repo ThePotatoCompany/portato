@@ -6,26 +6,14 @@
 	
 		<script type="text/javascript" src="lib/phaser.min.js"></script>
 		<script type="text/javascript" src="src/game.js"></script>
+		<script type="text/javascript" src="src/scenes/MainMenu.js"></script>
+		<script type="text/javascript" src="src/scenes/Level1.js"></script>
+		<script type="text/javascript" src="src/boot.js"></script>
 		
 	</head>
 	
 	<body>
-		<div id="gameContainer"></div>
+		<div id="Game"></div>
 		
-		<script type="text/javascript">
-			/*
-			window.onload = function() {
-				
-				// Create Phaser game and inject it into the gameContainer
-				var game = new Phaser.Game(1024, 624, Phaser.AUTO, 'gameContainer');
-				
-				// Add the States
-				game.state.add('Boot', Potato.Boot);
-				game.state.add('Preloader', Potato.Preloader);
-				game.state.add('MainMenu', Potato.MainMenu);
-				game.state.add('Game', Potato.Game);
-			};
-			*/
-		</script>
 	</body>
 </html>
